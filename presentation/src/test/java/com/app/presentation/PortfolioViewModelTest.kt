@@ -81,7 +81,8 @@ class PortfolioViewModelTest {
             totalCurrentValue = 3000.0,
             totalInvestment = 2300.0,
             totalPandL = 700.0,
-            todaysPandL = 25.0
+            todaysPandL = 25.0,
+            totalPandLPercentage = 30.434782608695656 // 700/2300 * 100
         )
 
         verify { observer.onChanged(UiState.Success(expectedUiModel)) }
@@ -101,7 +102,8 @@ class PortfolioViewModelTest {
             totalCurrentValue = 0.0,
             totalInvestment = 0.0,
             totalPandL = 0.0,
-            todaysPandL = 0.0
+            todaysPandL = 0.0,
+            totalPandLPercentage = 0.0
         )
 
         verify { observer.onChanged(UiState.Success(expectedUiModel)) }

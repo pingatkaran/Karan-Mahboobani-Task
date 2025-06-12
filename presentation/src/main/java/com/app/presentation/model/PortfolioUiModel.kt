@@ -7,5 +7,6 @@ data class PortfolioUiModel(
     val totalCurrentValue: Double = 0.0,
     val totalInvestment: Double = 0.0,
     val totalPandL: Double = 0.0,
-    val todaysPandL: Double = 0.0
+    val todaysPandL: Double = 0.0,
+    val totalPandLPercentage: Double = 0.0
 )

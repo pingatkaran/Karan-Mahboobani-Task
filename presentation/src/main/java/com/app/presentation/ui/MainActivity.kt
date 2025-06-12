@@ -3,6 +3,7 @@ package com.app.presentation.ui
 import android.graphics.Color
 import android.os.Bundle
 import android.view.View
+import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -115,11 +116,20 @@ class MainActivity : AppCompatActivity() {
         binding.currentValueAmount.text = formatCurrency(uiModel.totalCurrentValue)
         binding.totalInvestmentAmount.text = formatCurrency(uiModel.totalInvestment)
         updatePnlTextView(binding.todaysPnlAmount, uiModel.todaysPandL)
-        updatePnlTextView(binding.totalPnlAmount, uiModel.totalPandL)
+        val totalPnlText = getString(
+            R.string.pnl_with_percentage_format,
+            formatCurrency(uiModel.totalPandL),
+            uiModel.totalPandLPercentage
+        )
+        binding.totalPnlAmount.text = totalPnlText
+
+        val pnlColorRes = if (uiModel.totalPandL >= 0) Color.GREEN else Color.RED
+        binding.totalPnlAmount.setTextColor(pnlColorRes)
+
         portfolioAdapter.submitList(uiModel.holdings)
     }
 
-    private fun updatePnlTextView(textView: android.widget.TextView, value: Double) {
+    private fun updatePnlTextView(textView: TextView, value: Double) {
         textView.text = formatCurrency(value)
         val pnlColorRes = if (value >= 0) Color.GREEN else Color.RED
         textView.setTextColor(pnlColorRes)

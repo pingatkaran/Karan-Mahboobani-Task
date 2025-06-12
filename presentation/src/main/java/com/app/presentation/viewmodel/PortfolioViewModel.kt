@@ -24,13 +24,19 @@ class PortfolioViewModel(private val getPortfoliosUseCase: GetPortfolioUseCase) 
                 val totalCurrentValue = holdings.sumOf { it.currentValue }
                 val totalInvestment = holdings.sumOf { it.investmentValue }
                 val todaysPandL = holdings.sumOf { it.todaysPnL }
-
+                val totalPandL = totalCurrentValue - totalInvestment
+                val percentage = if (totalInvestment != 0.0) {
+                    (totalPandL / totalInvestment) * 100
+                } else {
+                    0.0
+                }
                 val uiModel = PortfolioUiModel(
                     holdings = holdings,
                     totalCurrentValue = totalCurrentValue,
                     totalInvestment = totalInvestment,
                     totalPandL = totalCurrentValue - totalInvestment,
-                    todaysPandL = todaysPandL
+                    todaysPandL = todaysPandL,
+                    totalPandLPercentage = percentage
                 )
                 _portfolioData.value = UiState.Success(uiModel)
             }.onFailure { err ->

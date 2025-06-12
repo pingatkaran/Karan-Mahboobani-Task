@@ -11,5 +11,6 @@
     <string name="ltp_format">LTP: %1$s</string>
     <string name="pnl_format">P&amp;L: %1$s</string>
     <string name="portfolio_holdings">Portfolio Holdings</string>
+    <string name="pnl_with_percentage_format">%1$s (%2$.2f%%)</string>
 
 </resources>
