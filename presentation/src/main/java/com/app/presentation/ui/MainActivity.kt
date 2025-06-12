@@ -8,7 +8,9 @@ import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
+import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.updatePadding
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.app.presentation.R
 import com.app.presentation.adapter.PortfolioAdapter
@@ -32,9 +34,15 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        // Enable edge-to-edge display. This must be called before setContentView.
+        enableEdgeToEdge()
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        enableEdgeToEdge()
+
+        // FIX: Programmatically set status bar icon color to light (white).
+        // This provides a direct instruction to the system, ensuring the correct icon color.
+        val windowInsetsController = WindowCompat.getInsetsController(window, window.decorView)
+        windowInsetsController.isAppearanceLightStatusBars = false
 
         setupToolbar()
         setupWindowInsets()
@@ -47,13 +55,18 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(binding.toolbar)
     }
 
+    // This listener correctly applies padding to the AppBarLayout to prevent it
+    // from overlapping with the status bar content.
     private fun setupWindowInsets() {
-        ViewCompat.setOnApplyWindowInsetsListener(binding.main) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, 0)
-            insets
+        ViewCompat.setOnApplyWindowInsetsListener(binding.appBarLayout) { view, windowInsets ->
+            val insets = windowInsets.getInsets(WindowInsetsCompat.Type.systemBars())
+            // Apply top padding to the AppBarLayout to push it down below the status bar
+            view.updatePadding(top = insets.top)
+            // Consume the insets to prevent other views from reacting to them
+            WindowInsetsCompat.CONSUMED
         }
     }
+
 
     private fun setupRecyclerView() {
         binding.holdingsRecyclerView.apply {
