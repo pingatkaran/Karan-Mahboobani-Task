@@ -90,12 +90,9 @@ To get the project up and running, follow these steps:
 
 ## 📸 Screenshots
 
-*(Placeholder for screenshots of the running application)*
-
-| Portfolio List | Expanded Summary |
-| :---: | :---: |
-| *Screenshot 1* | *Screenshot 2* |
+|                    Collapsed                    |                    Expanded                     |
+|:-----------------------------------------------:|:-----------------------------------------------:|
+| ![Screenshot 1](./screenshots/Screenshot1.jpeg) | ![Screenshot 2](./screenshots/Screenshot2.jpeg) |
+|       *Portfolio overview and list view*        |      *Expanded Detailed portfolio summary*      |
 
 ---
-
-
