@@ -39,7 +39,6 @@ class ApiServiceImpl : ApiService {
 
         val rootObject = JSONObject(jsonString)
 
-        // "data" -> "userHolding".
         val dataObject = rootObject.getJSONObject("data")
         val userHoldingArray = dataObject.getJSONArray("userHolding")
 

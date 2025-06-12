@@ -48,4 +48,12 @@ dependencies {
     implementation(libs.androidx.activity.ktx)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+
+    // For testing Architecture Components (LiveData)
+    testImplementation(libs.androidx.core.testing)
+
+    // For testing Kotlin Coroutines
+    testImplementation(libs.kotlinx.coroutines.test)
+    testImplementation(libs.mockk)
+
 }

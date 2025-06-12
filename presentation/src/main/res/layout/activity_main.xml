@@ -23,11 +23,10 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            app:title="Portfolio" />
+            app:title="Portfolio Holdings" />
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <!-- Holdings List with a border around the entire list -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/holdingsRecyclerView"
         android:layout_width="0dp"
@@ -40,7 +39,6 @@
         app:layout_constraintTop_toBottomOf="@id/appBarLayout"
          />
 
-    <!-- Bottom Expandable Summary Card -->
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/summaryCard"
         android:layout_width="0dp"
@@ -58,7 +56,6 @@
             android:layout_height="wrap_content"
             android:padding="15dp">
 
-            <!-- Views that are only visible when expanded -->
             <TextView
                 android:id="@+id/currentValueLabel"
                 style="@style/TextAppearance.Material3.LabelLarge"

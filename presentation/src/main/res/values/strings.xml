@@ -7,10 +7,7 @@
 
     <string name="holdings">Holdings</string>
 
-    <!-- Format strings for the holding item in the RecyclerView -->
-    <!-- %1$d is a placeholder for an integer (quantity) -->
     <string name="quantity_format">Qty: %1$d</string>
-    <!-- %1$s is a placeholder for a string (the formatted currency) -->
     <string name="ltp_format">LTP: %1$s</string>
     <string name="pnl_format">P&amp;L: %1$s</string>
     <string name="portfolio_holdings">Portfolio Holdings</string>
